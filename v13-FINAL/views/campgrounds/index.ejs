@@ -1,0 +1,46 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	
+	<header class="jumbotron border-danger" style="background-image: url('https://raw.githubusercontent.com/XS2929/YelpCamp/master/Images/joris-voeten-gL84ogFsV6s-unsplash.PNG'); background-size: cover">
+		
+		<div class="container text-white">
+
+			<h1 class="text-center"><span><i class="fab fa-free-code-camp"></i></span> Welcome to YelpCamp</h1>
+			<p class="text-center"><em>It is always the adventurers who do great things, not the sovereigns of great empires.</em></p>
+			<p class="text-center mt-5">
+				<a href="/campgrounds/new">
+					<button class="btn btn-lg btn-outline-light">
+						<span><i class="fas fa-plus-square"></i></span> Add new Campground
+					</button>
+				</a>
+			</p>
+					
+		</div>
+		
+	</header>
+  	<hr>
+	<div class="row mb-3">
+		<div class="col-lg-12">
+			<h3><em>Explore Campgrounds</em></h3>
+		</div>
+	</div>
+	<div class="row">
+		
+		<% campgrounds.forEach(function(campground){ %>
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-4">								
+				<div class="card border-danger">
+  					<img src="<%= campground["image"] %>" class="card-img-top" alt="<%= campground["name"] %>">
+  					<div class="card-body">
+						<p><strong><%= campground["name"] %></strong></p>
+						<hr class="my-1">
+    					<p class="card-text my-1"><%= campground["description"].substring(0, 70) %></p>
+						<a href="/campgrounds/<%= campground._id %>" class="btn btn-outline-danger btn-block"><span><i class="fas fa-info-circle"></i></span> Read More</a>
+  					</div>
+				</div>
+				
+			</div>
+		<% }) %>
+	</div>
+</div>
+<%- include("../partials/footer") %>

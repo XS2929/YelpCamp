@@ -1,0 +1,61 @@
+.thumbnail img {
+	width: 100%;
+}
+
+.thumbnail {
+	padding: 0;
+}
+
+.thumbnail .caption-full {
+	padding: 9px;
+}
+
+.delete-form {
+	display: inline;	
+}
+
+body {
+	background: 0xf7f7f7;
+	font-family: 'Roboto Slab', serif;
+}
+
+.jumbotron h1 {
+  font-family: Shrikhand;
+  font-size: 4em;
+}
+
+
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+
+.show-comment-card{
+	background-color:#f5f0e4;
+}
+
+.video-container {
+position: relative;
+padding-bottom: 56.25%;
+padding-top: 30px; height: 0; overflow: hidden;
+}
+ 
+.video-container iframe,
+.video-container object,
+.video-container embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 80%;
+height: 80%;
+}

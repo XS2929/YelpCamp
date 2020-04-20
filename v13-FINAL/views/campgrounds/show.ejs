@@ -1,0 +1,115 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3" >
+			<p class="lead text-center"><strong><em>About This Campground</em></strong></p>
+				<div class="card mb-3 border-danger" style="max-width: 18rem;">
+					<div class="card-header text-white bg-danger"><span><i class="fas fa-map-marked-alt"></i>  </span>Address</div>
+					<div class="card-body">
+						<p class="card-text">
+							<%= campground.address %>
+						</p>
+					</div>
+				</div>
+			
+				<div class="card mb-3 border-warning" style="max-width: 18rem;">
+					<div class="card-header text-white bg-warning"><span><i class="fas fa-phone-square-alt"></i>
+
+  </span>Contact</div>
+					<div class="card-body">
+						<p class="card-text">
+							<%= campground.contact %>
+						</p>
+					</div>
+				</div>
+			
+				<div class="card mb-3 border-info" style="max-width: 18rem;">
+					<div class="card-header text-white bg-info"><span><i class="fas fa-child"></i>
+
+  </span>Good for Kids</div>
+					<div class="card-body">
+						<p class="card-text">
+							<%= campground.kidsFriendly %>
+						</p>
+					</div>
+				</div>
+		</div>
+		
+		
+		<div class="col-md-9">
+			<div class="card border-secondary">
+				<img class="card-img-top" src="<%= campground.image %>" alt="<%= campground.name %>">
+				<div class="card-body">
+					<h5 class="float-right"><strong>$<u><%= campground.price %></strong>/night</u></h5> 
+					<h2 class="card-title"><a><%= campground.name %></a></h2>
+					<div>
+						<p class="card-text"><em>Added by <strong><%= campground.author.username %></strong></em> <span class="float-right"><strong><%= moment(campground.createdAt).fromNow() %></strong></span></p>
+					</div>
+					<hr>
+					<p class="card-text"><%= campground.description %></p>
+					
+					<% if((currentUser && campground.author.id.equals(currentUser._id)) || (currentUser && currentUser.isAdmin)){ %>
+						<div class="float-right btn-group">
+						<form class="delete-form ml-5" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">	
+							<button class="btn btn-sm btn-outline-danger">Delete</button>
+						</form>
+						
+						<a class="btn btn-sm btn-outline-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+						</div>
+					<% } %>
+				</div>
+			</div>
+			
+			<div class="card border-secondary mt-5">
+				<div class="card-body">
+					<form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+						<div class="form-group mb-0">
+							<textarea rows="3" class="form-control border-danger" name="comment[text]" maxlength="280" placeholder="Add New Comment" required></textarea>
+						</div>
+				
+						<div class="form-group">
+							<small class="my-0 py-0"><em>Length limit: 280 characters</em></small>
+							<button class="btn btn-danger btn-sm float-right my-1">Submit</button>
+						</div>			
+					</form>
+					
+					<div class="row container bt-5 mt-5">
+						<h3>Comments</h3>
+					<% campground.comments.forEach(function(comment){ %>
+						<div class="card show-comment-card mt-2 border-light col-md-12">
+							<div class="card-body pb-1 pt-2 px-1">
+								<p class="float-right"><strong><em><%= moment(comment.createdAt).fromNow() %></em></strong></p>
+								<p class="card-title"><strong><em><%= comment.author.username %></em></strong></p>
+								<p class="card-text">
+									<hr class="my-1">
+									<%= comment.text %>
+								</p>
+								<% if((currentUser && comment.author.id.equals(currentUser._id)) || (currentUser && currentUser.isAdmin)){ %>
+									<div class="float-right btn-group">
+										<form class="delete-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+											<input type="submit" class="btn btn-sm btn-outline-danger" value="Delete">
+										</form>
+										<a class="btn btn-sm btn-outline-warning" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
+									</div>
+								<% } %>
+							</div>
+						</div>
+					<% }); %>
+					</div>
+				</div>		
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container">
+
+	
+
+
+
+</div>
+<%-	include("../partials/footer") %>

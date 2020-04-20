@@ -1,0 +1,61 @@
+<%- include("../partials/header") %>
+<div class="container">
+	<div class="row justify-content-center" >
+		<div class="col-md-12 text-center mb-4">
+			<h1>Create a new Campground</h1>
+		</div>
+		
+		<div class="my-4 col-xs-12 col-md-6">
+			
+			<form action="/campgrounds" method="POST">
+				<div class="form-group">
+					<lable for="name"><strong>Name</strong></lable>
+					<input class="form-control" maxlength="70" type="text" name="name" placeholder="name of campground" required>
+				</div>
+				<div class="form-group">
+					<lable for="image"><strong>Image Url</strong></lable>
+					<input class="form-control" type="text" name="image" placeholder="image url" required>
+				</div>
+				<div class="form-group">
+					<lable for="description"><strong>Description</strong></lable>
+					<textarea class="form-control" rows="9" maxlength="500" name="description" placeholder="campground description" required></textarea>
+					<small><strong>Length limit:</strong> 500 characters</small>		
+				</div>
+				<div class="form-group">
+					<lable for="price"><strong>Price</strong></lable>
+					<input class="form-control" type="number" name="price" placeholder="$/night" min="0.00" step="0.01" required>
+				</div>
+				
+				<div class="form-group">
+					<lable for="address"><strong>Address</strong></lable>
+					<input class="form-control" type="text" maxlength="150" name="address" placeholder="campground address" required>
+					<small><strong>Length limit:</strong> 150 characters</small>
+				</div>
+				
+				<div class="form-group">
+					<lable for="contact"><strong>Contact Number</strong></lable>
+					<input class="form-control" type="tel" name="contact" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="0123456789" required>
+					<small><strong>Format:</strong> 0123456789</small>
+				</div> 
+				
+				<div class="form-group">
+					<lable for="kidsFriendly"><strong>Good for Kids?</strong></lable>
+					<select class="custom-select" name="kidsFriendly" required>
+					  <option value="YES">Yes</option>
+					  <option value="NO">No</option>
+					  <option selected value="UNKNOWN">Unknown</option>
+					</select>
+				</div>
+				
+				<div class="form-group">
+					<button class="btn btn-lg btn-primary btn-block">Submit</button>
+				</div>			
+				
+			</form>
+
+			<a href="/campgrounds">Back</a>
+		<div>	
+	</div>
+</div>
+
+<%- include("../partials/footer") %>

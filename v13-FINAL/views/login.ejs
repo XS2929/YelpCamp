@@ -1,0 +1,35 @@
+<%- include("./partials/header") %>
+
+<div  class="container">
+	<h1 class="text-center">
+		<span><i class="fas fa-mountain"></i></span>YelpCamp
+	</h1>
+</div>
+
+<div class="container mt-5 mb-0 pd-1">
+	<h4 class="text-center mb-0">
+		Log in to YelpCamp
+	</h4>
+</div>
+
+<div class="container mt-1 pt-1">
+  <div class="row">
+    <div style="width: 30%; margin: 30px auto;">
+      <form action="/login" method="post">
+        <div class="form-group">
+			<label for="username"><strong>Username</strong></label>
+            <input class="form-control" type="text" name="username" placeholder="username" required>
+        </div>
+        <div class="form-group">
+			<label for="password"><strong>Password</strong></label>
+            <input class="form-control" type="password" name="password" placeholder="password" required>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block">Log In</button>
+      </form>
+    </div>
+  </div>
+	<p class="text-center">Need an account?  <span>   </span><a href="/register">  Sign up for YelpCamp</a></p>
+</div>
+
+<%- include("./partials/footer") %>
+

@@ -1,0 +1,53 @@
+<%- include("../partials/header") %>
+<div class="container">
+	<div class="row justify-content-center" >
+		<div class="col-md-12 text-center">
+			<h1>Edit <%= campground.name %></h1>
+		</div>
+		
+		<div class="col-xs-12 col-md-6">	
+			<form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
+				<div class="form-group">
+					<lable><strong>Name</strong></lable>
+					<input class="form-control" type="text" name="campground[name]" value="<%= campground.name %>" required>
+				</div>
+				<div class="form-group">
+					<lable><strong>Image Url</strong></lable>
+					<input class="form-control" type="text" name="campground[image]" value="<%= campground.image %>" required>
+				</div>
+				<div class="form-group">
+					<lable><strong>Description</strong></lable>
+					<textarea class="form-control" rows="9" maxlength="500" name="campground[description]" placeholder="campground description" required><%= campground.description %></textarea>
+					<small><strong>Length limit:</strong> 500 characters</small>
+				</div>
+				<div class="form-group">
+					<lable><strong>Price</strong></lable>
+					<input class="form-control" type="number" name="campground[price]" value="<%= campground.price %>" min="0.00" step="0.01" required>
+				</div>
+				<div class="form-group">
+					<lable><strong>Address</strong></lable>
+					<input class="form-control" type="text" maxlength="150" name="campground[address]" value="<%= campground.address %>" required>
+				</div>
+				<div class="form-group">
+					<lable><strong>Contact Number</strong></lable>
+					<input class="form-control" type="tel" name="campground[contact]" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" value="<%= campground.contact %>" required>
+					<small><strong>Format:</strong> 0123456789</small>
+				</div>
+				<div class="form-group">
+					<lable><strong>Good for Kids?</strong></lable>
+					<select class="custom-select" name="campground[kidsFriendly]" required>
+					  <option value="YES">Yes</option>
+					  <option value="NO">No</option>
+					  <option selected value="UNKNOWN">Unknown</option>
+					</select>
+				</div>			
+				<div class="form-group">
+					<button class="btn btn-lg btn-default btn-primary btn-block">Submit</button>
+				</div>			
+				
+			</form>
+
+			<a href="/campgrounds">Back</a>
+		<div>	
+	</div>
+</div>
