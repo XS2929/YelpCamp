@@ -3,7 +3,7 @@
 ## Admin Login info
 
 ### Username: ADMIN
-### Password: 19890604
+### Password: password
 
 ## Database Key Location
 
